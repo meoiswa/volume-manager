@@ -48,6 +48,9 @@ chrome.tabs.onRemoved.addListener(function(a) {
 
 function mainClicker(e) {
     chrome.tabs.query({ currentWindow: true, active: true }, function(tabArray) {
+        if (!tabArray) {
+            return;
+        }
         var id = tabArray[0].id;
         if (a.getTab(id)) {
             var resFloat;
@@ -194,7 +197,7 @@ chrome.extension.onConnect.addListener(function(port) {
 })
 
 
-chrome.runtime.onMessageExternal.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if(request.how == 'get')
         chrome.storage.sync.get(request.what, function(items) {
             sendResponse(items)
@@ -205,32 +208,6 @@ chrome.runtime.onMessageExternal.addListener(function(request, sender, sendRespo
             fscreen = request.what.fscreen;
             muteAll = request.what.muteAll;
             a.toMute(muteAll);
-            sendResponse(true);
         });
     return true;
 });
-
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    if(request.how == 'popup'){
-        _gaq.push(['_trackEvent', 'popup', request.what]);
-    }
-    if(request.how == 'promotion'){
-        _gaq.push(['_trackEvent', 'promotion', request.what]);
-    }
-})
-
-
-
-
-
-
-
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-76335181-13']);
-_gaq.push(['_trackPageview']);
-
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = 'https://ssl.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
