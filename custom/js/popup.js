@@ -11,30 +11,13 @@ angular.module('main', ['ngMaterial'])
 	function changeVolume(id, val){
 		port.postMessage({id: parseInt(id), val: val});
 	}
-	
+
 	$scope.currentLevel = 100;
 	$scope.noizeTabs = [];
 	$scope.controlledTabs = [];
 	$scope.currentFavIconUrl = '';
 	$scope.shows = false;
 	$scope.filePNG = fileImage;
-	$scope.promote1 = !1;
-
-	$scope.promote1Show = function(e){
-		if(e){
-			$scope.promote1 = !0;
-			chrome.runtime.sendMessage({how: "promotion", what: 'Interested in the promote 1'});
-		}else{
-			$scope.promote1 = !1;
-			chrome.runtime.sendMessage({how: "promotion", what: 'Close the promote 1'});
-		}
-	}
-	$scope.promote1Redirect = function(){
-		chrome.runtime.sendMessage({how: "promotion", what: 'Redirected to the promote 1'});
-		setTimeout(function () {
-			chrome.tabs.create({url: 'http://www.verblike.com/liker/liker-webstore-actual-link/', active: !0, selected: !0});
-		}, 10);
-	}
 
 	chrome.tabs.query({ currentWindow: true, active: true }, function(tabArray) {
 		$scope.currentFavIconUrl = tabArray[0].favIconUrl;
