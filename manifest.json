@@ -1,61 +1,56 @@
 {
-  "name": "Volume Manager",
-  "version": "18",
-  "author": "Vadagon",
-  "manifest_version": 2,
-  "default_locale": "en",
-  "description": "Control volume and boost volume of any Tab",
-  "permissions": [
-    "tabCapture",
-    "activeTab",
-    "tabs",
-    "storage",
-    "<all_urls>"
-  ],
-  "browser_action": {
-    "default_title": "Click to open Volume Manager",
-    "default_popup": "popup.html",
-    "default_icon": "images/icon512.png"
-  },
-  "icons": {
-    "16": "images/icon16.png",
-    "16": "images/icon32.png",
-    "48": "images/icon48.png",
-    "128": "images/icon128.png"
-  },
+  "author": "Vadagon (Modded by Meoiswa)",
   "background": {
-    "scripts": ["background.js"]
+     "scripts": [ "background.js" ]
   },
-  "content_scripts": [
-    {
-      "matches": ["https://*/*", "http://*/*", "<all_urls>"],
-      "css": ["custom/css/style.css"],
-      "js": ["custom/js/content.js"]
-    }
-  ],
-  "options_page": "options.html",
-  "offline_enabled": true,
+  "browser_action": {
+     "default_icon": "images/icon512.png",
+     "default_popup": "popup.html",
+     "default_title": "Click to open Volume Manager"
+  },
   "commands": {
-    "toggle-up-1": {
-      "suggested_key": {
-        "default": "Alt+Up"
-      },
-      "description": "Volume up"
-    },
-    "toggle-down-1": {
-      "suggested_key": {
-        "default": "Alt+Down"
-      },
-      "description": "Volume down"
-    },
-    "_execute_browser_action": {
-      "suggested_key": {
-        "default": "Ctrl+Q"
-      }
-    }
+     "_execute_browser_action": {
+        "suggested_key": {
+           "default": "Ctrl+Q"
+        }
+     },
+     "toggle-down-1": {
+        "description": "Volume down",
+        "suggested_key": {
+           "default": "Alt+Down"
+        }
+     },
+     "toggle-up-1": {
+        "description": "Volume up",
+        "suggested_key": {
+           "default": "Alt+Up"
+        }
+     }
   },
-  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
-  "externally_connectable": {
-    "matches": ["*://vadagon.github.io/*"]
-  }
+  "content_scripts": [ {
+     "css": [ "custom/css/style.css" ],
+     "js": [ "custom/js/content.js" ],
+     "matches": [ "https://*/*", "http://*/*"  ]
+  } ],
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "default_locale": "en",
+  "description": "Control volume and boost volume of any Tab (Meow's Edition)",
+  "icons": {
+     "128": "images/icon128.png",
+     "16": "images/icon32.png",
+     "48": "images/icon48.png"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiJWFNfAt9jP6z1Ly3wlZaxVDpqyN+Y1F2E/e8BUl/W8PNjyC8T+lvqqCEe2ZyEjm/6KJ8ZqmEq3t10uUpTus1btwk11UJVHcr9W3Q6kQb0HrUmQDYXi+arPOjoKVlYwgcDrjgDWKteGRwM233czQhTVyVg6hdb/pIBF2wfxVM8Y+2TBTZiOj66Dkq8OWy8JIhByUCmo3QzbDCzfnR44DNjUCpfbaaVvhGm8tlUMRtfsb6CQxT/to3LOTNIBwV8Ls3YLIDWHmaUSHmTAF4xfFD36YmDanYZVFRALhGUT2SJJcigIOHmEZvs3hfz0v7wc1aDdSN4fJ9TGakRIrb97kmQIDAQAB",
+  "manifest_version": 2,
+  "name": "Volume Manager (Meows Edition)",
+  "offline_enabled": true,
+  "options_page": "options.html",
+  "permissions": [
+     "tabCapture",
+     "activeTab",
+     "tabs",
+     "storage",
+     "<all_urls>"
+  ],
+  "version": "20"
 }

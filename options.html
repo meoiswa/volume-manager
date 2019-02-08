@@ -1,7 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta http-equiv="refresh" content="0;URL='https://vadagon.github.io/volume-manager/volume-options/'" />    
-    <title>Volume Controller + Volume Booster</title>
+    <title>Volume Controller Options</title>
 </head>
+
+<body>
+    <div>
+        <ul style="list-style: none;">
+
+            <li><input id="muteAll" type="checkbox">Automatically mute all tabs. <small>(Every tab will be at 0% volume.)</small></li>
+            <li><input id="fscreen" type="checkbox">Fullscreen mode for Videos. <small>(Original developer suggests this might break)</small></li>
+            <li><input id="keysType1" type="checkbox">Volume Ticker Display <small>(Show/hide the volume popup on hotkey press)</small></li>
+            <li><input id="keysType2" type="checkbox">Undocumented function <small>(No idea what this does)</small></li>
+            <br>
+            <li><button id="save">Save</button></li>
+        </ul>
+    </div>
+
+    <script src="custom/js/options.js"></script>
+</body>
+
 </html>
